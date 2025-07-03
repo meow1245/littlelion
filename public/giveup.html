@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>北極熊凝視</title>
+  <link rel="stylesheet" href="giveup.css" />
+</head>
+<body>
+  <header class="top-bar">
+    <div class="left">
+      <img src="pictures/logo.png" alt="統一證券 Logo" />
+      <span class="company-name">統一證券小獅子 主管</span>
+    </div>
+    <div class="right">
+      <span id="user-role">名稱</span>
+      <button id="logout-btn">登出</button>
+    </div>
+  </header>
+
+  <main class="image-container">
+    <div class="caption">來自北極熊的凝視</div>
+    <img src="pictures/北極熊.jpg" alt="北極熊凝視" />
+  </main>
+
+  <script>
+    document.getElementById("logout-btn").addEventListener("click", () => {
+      window.location.href = "index.html";
+    });
+  </script>
+</body>
+</html>

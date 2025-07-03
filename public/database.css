@@ -1,0 +1,560 @@
+/* 通用設定 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Noto Sans TC", sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #c8dafc, #f0f6ff);
+    color: #2c3e50;
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Top bar */
+.top-bar {
+    background-color: #ffffff;
+    border-bottom: 5px solid #ff5a00;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 3px 10px rgba(255, 90, 0, 0.2);
+    position: relative;
+    z-index: 100;
+    width: 100%;
+}
+
+.top-bar .left {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.top-bar img {
+    max-height: 48px;
+    max-width: 180px;
+}
+
+.company-name {
+    font-weight: 700;
+    font-size: 24px;
+    color: #ff5a00;
+}
+
+.right {
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+#logout-btn {
+    background-color: #d94f3e;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    padding: 10px 22px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.25s ease;
+    font-size: 16px;
+}
+
+#logout-btn:hover {
+    background-color: #b23a28;
+}
+
+/* --- Container for main content --- */
+.container {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 50px;
+    max-width: 1300px;
+    margin: 25px auto 50px;
+}
+
+/* --- Back Button / Return Button --- */
+/* 針對返回上頁按鈕 (只有圖) 的樣式 */
+#history-back-btn {
+    position: absolute;
+    top: 100px;
+    left: 30px;
+    background: none; /* 確保背景為透明 */
+    border: none; /* 確保沒有邊框 */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    font-size: 0;
+    font-weight: 600;
+    color: #0275d8;
+    transition: color 0.3s ease, transform 0.3s ease; /* 移除 box-shadow 過渡 */
+    padding: 0;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%; /* 雖然沒有背景，但保留圓角以防未來需求 */
+    box-shadow: none; /* 移除陰影 */
+    z-index: 90;
+}
+
+#history-back-btn:hover {
+    color: #025aa5;
+    transform: translateX(-5px) scale(1.05); /* 保持 hover 效果 */
+    box-shadow: none; /* 確保 hover 時也無陰影 */
+}
+
+#history-back-btn .return-icon {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+/* 針對操作頁面內的返回資料庫專區按鈕 (有文字有圖) 的樣式 */
+.operation-page .return-to-main-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #0275d8;
+    transition: color 0.3s ease, transform 0.3s ease;
+    align-self: flex-start;
+    margin-bottom: 35px;
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    box-shadow: none;
+    background-color: transparent;
+    border-radius: 0;
+}
+
+.operation-page .return-to-main-btn:hover {
+    color: #025aa5;
+    transform: translateX(-5px);
+}
+
+.operation-page .return-to-main-btn .return-icon {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+/* --- Main Content Area --- */
+.content-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 35px;
+    width: 100%;
+}
+
+/* --- Database Section (Main) --- */
+.database-section {
+    background: #fff;
+    border-radius: 25px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 1100px;
+    min-height: 600px;
+    padding: 45px 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 35px;
+    text-align: center;
+    transition: box-shadow 0.35s ease, transform 0.35s ease;
+}
+
+.database-section:hover {
+    box-shadow: 0 16px 35px rgba(0, 0, 0, 0.2);
+    transform: translateY(-10px);
+}
+
+.database-section h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #ff5a00;
+    text-shadow: 1px 1px 4px #f3b183aa;
+    margin-bottom: 0;
+}
+
+.section-image {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    margin: 0 auto;
+    user-select: none;
+    filter: drop-shadow(1px 2px 2px rgba(255, 90, 0, 0.3));
+}
+
+.btn-group {
+    display: flex;
+    gap: 22px;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+}
+
+.btn-group button {
+    flex: 1 1 40%;
+    min-width: 160px;
+    padding: 20px 0;
+    font-size: 1.5rem;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+    color: #fff;
+    user-select: none;
+}
+
+/* Button specific styles (陰影也略微放大) */
+.add-btn {
+    background-color: #28a745;
+    box-shadow: 0 8px 12px #23863aaa;
+}
+
+.add-btn:hover {
+    background-color: #1e7e34;
+    box-shadow: 0 10px 20px #1e7e34cc;
+    transform: translateY(-4px);
+}
+
+.delete-btn {
+    background-color: #d9534f;
+    box-shadow: 0 8px 12px #a63631aa;
+}
+
+.delete-btn:hover {
+    background-color: #b52b27;
+    box-shadow: 0 10px 20px #b52b27cc;
+    transform: translateY(-4px);
+}
+
+.update-btn {
+    background-color: #0275d8;
+    box-shadow: 0 8px 12px #025a9caa;
+}
+
+.update-btn:hover {
+    background-color: #025aa5;
+    box-shadow: 0 10px 20px #025aa5cc;
+    transform: translateY(-4px);
+}
+
+.view-btn {
+    background-color: #ffc107;
+    color: #333;
+    box-shadow: 0 8px 12px #b38a00aa;
+}
+
+.view-btn:hover {
+    background-color: #cc9a06;
+    box-shadow: 0 10px 20px #cc9a06cc;
+    transform: translateY(-4px);
+}
+
+/* --- Operation Page Styles (for Add/Delete/Edit/View) --- */
+.operation-page {
+    background: #fff;
+    border-radius: 25px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 1100px;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 35px;
+    text-align: center;
+}
+
+.operation-page h2 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #ff5a00;
+    text-shadow: 1px 1px 4px #f3b183aa;
+    margin-bottom: 25px;
+}
+
+/* --- Operation Form Styles --- */
+.operation-form {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    width: 100%;
+    max-width: 600px;
+    text-align: left;
+}
+
+.operation-form label {
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: #333;
+    user-select: none;
+    margin-top: 6px;
+}
+
+.operation-form input[type="text"],
+.operation-form input[type="password"],
+.operation-form select {
+    padding: 18px 25px;
+    border-radius: 18px;
+    border: 2px solid #d8d8d8;
+    font-size: 1.3rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: #fff;
+}
+
+.operation-form input:focus,
+.operation-form select:focus {
+    outline: none;
+    border-color: #ff5a00;
+    box-shadow: 0 0 10px #ff5a00aa;
+}
+
+.operation-submit {
+    margin-top: 30px;
+    padding: 22px 0;
+    background-color: #ff5a00;
+    border: none;
+    border-radius: 25px;
+    font-weight: 800;
+    font-size: 1.7rem;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.35s ease, box-shadow 0.35s ease;
+    user-select: none;
+    box-shadow: 0 9px 22px #ff7a0daa;
+}
+
+.operation-submit:hover {
+    background-color: #e64a00;
+    box-shadow: 0 11px 25px #e64a00cc;
+}
+
+/* --- View Results Table Styles --- */
+.view-table-container {
+    margin-top: 25px;
+    padding: 25px;
+    background-color: #f9fbff;
+    border-radius: 15px;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.12);
+    overflow-x: auto;
+    width: 100%;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.view-table-container table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    font-size: 20px;
+    color: #333;
+}
+
+.view-table-container thead {
+    background-color: #ff5a00;
+    color: white;
+}
+
+.view-table-container thead th {
+    padding: 18px 12px;
+    font-weight: bold;
+    border: 1px solid #e0e0e0;
+}
+
+.view-table-container tbody td {
+    padding: 15px 10px;
+    border: 1px solid #ddd;
+}
+
+.view-table-container tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.view-table-container tbody tr:hover {
+    background-color: #ffe6d5;
+    transition: background-color 0.3s ease;
+}
+
+/* --- Responsive Design (Proportional scaling) --- */
+@media (max-width: 992px) {
+    .container {
+        padding: 30px 25px;
+    }
+
+    #history-back-btn {
+        width: 60px;
+        height: 60px;
+        top: 90px;
+        left: 20px;
+    }
+
+    #history-back-btn .return-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .operation-page .return-to-main-btn {
+        margin-bottom: 30px;
+        font-size: 1.2rem;
+        gap: 8px;
+    }
+
+    .operation-page .return-to-main-btn .return-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .database-section {
+        width: 95%;
+        max-width: none;
+        min-height: unset;
+        padding: 40px 25px;
+        gap: 30px;
+    }
+
+    .database-section h2 {
+        font-size: 2.8rem;
+    }
+
+    .section-image {
+        width: 180px;
+        height: 180px;
+    }
+
+    .btn-group {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .btn-group button {
+        width: 100%;
+        min-width: unset;
+        font-size: 1.3rem;
+    }
+
+    .operation-page {
+        padding: 40px;
+        max-width: 100%;
+    }
+
+    .operation-page h2 {
+        font-size: 3rem;
+    }
+
+    .operation-form {
+        max-width: 100%;
+    }
+
+    .operation-submit {
+        padding: 20px 0;
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 12px 20px;
+    }
+
+    .top-bar .left {
+        margin-bottom: 12px;
+    }
+
+    .top-bar .company-name {
+        font-size: 22px;
+    }
+
+    .right {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 16px;
+    }
+
+    #logout-btn {
+        padding: 8px 18px;
+    }
+
+    .container {
+        padding: 20px;
+        margin: 20px auto 40px;
+    }
+
+    #history-back-btn {
+        width: 50px;
+        height: 50px;
+        top: 80px;
+        left: 15px;
+    }
+
+    #history-back-btn .return-icon {
+        width: 30px;
+        height: 30px;
+    }
+
+    .operation-page .return-to-main-btn {
+        font-size: 1.1rem;
+        margin-bottom: 25px;
+    }
+
+    .operation-page .return-to-main-btn .return-icon {
+        width: 35px;
+        height: 35px;
+    }
+
+    .database-section {
+        padding: 30px 20px;
+        gap: 25px;
+    }
+
+    .database-section h2 {
+        font-size: 2.5rem;
+    }
+
+    .section-image {
+        width: 150px;
+        height: 150px;
+    }
+
+    .operation-page {
+        padding: 30px;
+        gap: 25px;
+    }
+
+    .operation-page h2 {
+        font-size: 2.5rem;
+    }
+
+    .operation-form label {
+        font-size: 1.2rem;
+    }
+
+    .operation-form input[type="text"],
+    .operation-form input[type="password"] {
+        padding: 14px 20px;
+        font-size: 1.2rem;
+    }
+}

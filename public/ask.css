@@ -1,0 +1,227 @@
+/* 通用設定 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Noto Sans TC", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background-color: #f4f4f4;
+}
+
+/* Top bar */
+.top-bar {
+  background: white;
+  border-bottom: 5px solid #ff5a00;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.top-bar .left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.top-bar img {
+  max-height: 40px;
+  max-width: 150px;
+}
+
+.company-name {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 16px;
+}
+
+#logout-btn {
+  padding: 8px 16px;
+  background-color: #d70000;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#logout-btn:hover {
+  background-color: #aa0000;
+}
+
+.back-btn {
+  position: fixed;
+  top: 70px; 
+  left: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.back-btn img {
+  width: 76px;
+  height: 76px;
+}
+
+.main-area {
+  display: flex;
+  flex-direction: column; /* 改為垂直排列 */
+  align-items: center; /* 水平居中 */
+  padding: 20px;
+  gap: 20px; /* 元素之間的間距 */
+  max-width: 800px; /* 限制內容寬度 */
+  margin: 20px auto; /* 上下邊距，左右自動居中 */
+  height: auto; /* 移除固定高度，讓內容撐開 */
+  min-height: calc(100vh - 100px); /* 確保有最小高度 */
+}
+
+/* Gemini specific sections */
+.question-section {
+  width: 100%;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.question-section h2 {
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.question-section textarea {
+  width: 100%; /* 設置為100% */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  resize: vertical; /* 允許垂直調整大小 */
+  min-height: 100px;
+  margin-bottom: 15px; /* 與按鈕的間距 */
+}
+
+.question-section button {
+  background-color: #007bff; /* 藍色，符合證券公司風格 */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.question-section button:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+.question-section button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.response-section {
+  width: 100%;
+  background-color: #e6f7ff; /* 淡藍色背景 */
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  min-height: 150px; /* 最小高度 */
+  white-space: pre-wrap; /* 保留換行和空格 */
+  word-wrap: break-word; /* 自動換行 */
+  overflow-wrap: break-word; /* 兼容性更好 */
+  border-left: 5px solid #007bff; /* 左側邊框作為裝飾 */
+}
+
+.response-section h3 {
+  margin-bottom: 15px;
+  color: #004d99; /* 深藍色 */
+}
+
+#responseOutput {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* 左右排版容器 */
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+  gap: 20px;
+}
+
+/* 左邊：問題 + 回答 */
+.left-panel {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* 右邊：法條依據 */
+.right-panel {
+  flex: 1;
+  background-color: #fff8e1;
+  border-left: 4px solid #ff9800;
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 14px;
+  height: fit-content;
+}
+
+/* 底部參考來源 */
+.footer {
+  border-top: 2px solid #ccc;
+  padding: 20px;
+  margin-top: 40px;
+  background-color: #fafafa;
+}
+
+.footer ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.footer li {
+  margin-bottom: 8px;
+}
+
+.footer a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+#sourceList {
+  max-height: 400px;
+  overflow-y: auto;
+  background-color: #f9f9f9;
+  padding: 10px;
+  border-left: 2px solid #ccc;
+  margin-top: 10px;
+  white-space: pre-wrap;
+}
+
+.source-item {
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed #bbb;
+}

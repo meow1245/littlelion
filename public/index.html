@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>統一證券小獅子</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="overlay"></div> 
+
+  <div class="top-bar">
+    <div class="left">
+      <img src="pictures/logo.png" alt="統一證券 Logo" />
+      <span class="company-name">統一證券小獅子</span>
+    </div>
+    <div class="right">未登入</div>
+  </div>
+
+  <main class="main-content">
+    <div class="login-box">
+      <div class="title">使用者登入</div>
+
+      <label for="username" class="label-text">使用者帳號</label>
+      <input type="text" id="username" />
+
+      <label for="password" class="label-text">使用者密碼</label>
+      <input type="password" id="password" />
+
+      <div class="error-message" id="error-message"></div>
+
+      <button class="login-btn" id="login-btn">登入</button>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Noto Sans TC", sans-serif;
+}
+
+body {
+  position: relative;
+  background-image: url("pictures/建築.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 100vh;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.6);
+  z-index: 0;
+}
+
+.top-bar {
+  background: white;
+  border-bottom: 5px solid #ff5a00;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.top-bar img {
+  max-height: 40px;
+  max-width: 150px;
+  width: auto;
+  height: auto;
+  display: block;
+}
+
+.top-bar .left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.company-name {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.right {
+  font-size: 16px;
+}
+
+.main-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 60px);
+  position: relative;
+  z-index: 1;
+}
+
+.login-box {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 60px 50px;
+  width: 420px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.title {
+  color: #d70000;
+  font-size: 26px;
+  text-align: center;
+}
+
+.label-text {
+  font-size: 16px;
+}
+
+.login-box input {
+  padding: 14px;
+  border: none;
+  background: #e0e0e0;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  text-align: center;
+}
+
+.admin-text {
+  text-align: center;
+  font-size: 15px;
+  color: #0077cc;
+  cursor: pointer;
+  margin-top: 5px;
+  text-decoration: underline;
+}
+
+.login-btn {
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 14px;
+  font-size: 18px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+.login-btn:hover {
+  background-color: #333;
+}
+
+.login-btn:disabled {
+  background-color: #999;
+  cursor: not-allowed;
+}

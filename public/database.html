@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>管理資料庫</title>
+  <link rel="stylesheet" href="database.css" />
+</head>
+<body>
+  <header class="top-bar">
+    <div class="left">
+      <img src="pictures/logo.png" alt="統一證券 Logo" />
+      <span class="company-name">統一證券小獅子 後台管理</span>
+    </div>
+    <div class="right">
+      <span id="user-role">後台管理員</span>
+      <button id="logout-btn">登出</button>
+    </div>
+  </header>
+
+  <div class="container">
+    <button class="return-to-main-btn" id="history-back-btn" onclick="history.back()">
+      <img src="pictures/back.png" alt="返回" class="return-icon" />
+    </button>
+
+    <main class="content-area">
+      <section class="database-section" id="main-database-section">
+        <h2>資料庫專區</h2>
+        <img src="pictures/database.png" alt="資料庫圖示" class="section-image" />
+        <div class="btn-group">
+          <button class="add-btn" onclick="showSection('add')">新增</button>
+          <button class="delete-btn" onclick="showSection('delete')">刪除</button>
+          <button class="update-btn" onclick="showSection('edit')">修改</button>
+          <button class="view-btn" onclick="showSection('view')">查看</button>
+        </div>
+      </section>
+
+      <section id="add-section" class="operation-page" style="display:none;">
+        <button class="return-to-main-btn" onclick="returnToMainDatabaseSection()">
+          <img src="pictures/back.png" alt="返回" class="return-icon" />
+          返回資料庫專區
+        </button>
+        <h2>新增法條</h2>
+        <form id="add-form" class="operation-form">
+          <label>Data ID：
+            <input type="text" name="dataID" required />
+          </label>
+          <label>新增法條：
+            <input type="text" name="law" required />
+          </label>
+          <label>關鍵字：
+            <input type="text" name="keywords" required />
+          </label>
+          <button type="submit" class="operation-submit add-btn">新增</button>
+        </form>
+      </section>
+
+      <section id="delete-section" class="operation-page" style="display:none;">
+        <button class="return-to-main-btn" onclick="returnToMainDatabaseSection()">
+          <img src="pictures/back.png" alt="返回" class="return-icon" />
+          返回資料庫專區
+        </button>
+        <h2>刪除資料</h2>
+        <form id="delete-form" class="operation-form">
+          <label>Data ID：
+            <input type="text" name="dataID" required />
+          </label>
+          <button type="submit" class="operation-submit delete-btn">刪除</button>
+        </form>
+      </section>
+
+      <section id="edit-section" class="operation-page" style="display:none;">
+        <button class="return-to-main-btn" onclick="returnToMainDatabaseSection()">
+          <img src="pictures/back.png" alt="返回" class="return-icon" />
+          返回資料庫專區
+        </button>
+        <h2>修改資料</h2>
+        <form id="edit-form" class="operation-form">
+          <label>Data ID：
+            <input type="text" name="dataID" required />
+          </label>
+          <label>修改法條：
+            <input type="text" name="law" required />
+          </label>
+          <label>關鍵字：
+            <input type="text" name="keywords" required />
+          </label>
+          <button type="submit" class="operation-submit update-btn">修改</button>
+        </form>
+      </section>
+
+      <section id="view-section" class="operation-page" style="display:none;">
+        <button class="return-to-main-btn" onclick="returnToMainDatabaseSection()">
+          <img src="pictures/back.png" alt="返回" class="return-icon" />
+          返回資料庫專區
+        </button>
+        <h2>所有法條資料</h2>
+        <div id="view-results" class="view-table-container">
+          載入中...
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="database.js"></script>
+</body>
+</html>

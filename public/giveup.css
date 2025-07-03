@@ -1,0 +1,88 @@
+/* 通用設定 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Noto Sans TC", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background-color: #f4f4f4;
+}
+
+/* Top bar */
+.top-bar {
+  background: white;
+  border-bottom: 5px solid #ff5a00;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  height: 60px;
+}
+
+.top-bar .left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.top-bar img {
+  max-height: 40px;
+  max-width: 150px;
+}
+
+.company-name {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 16px;
+}
+
+#logout-btn {
+  padding: 8px 16px;
+  background-color: #d70000;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#logout-btn:hover {
+  background-color: #aa0000;
+}
+
+.image-container {
+  height: calc(100vh - 60px); 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 20px;
+  background: #f4f4f4;
+}
+
+.image-container img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.image-container .caption {
+  margin-top: 16px;
+  font-weight: 700;
+  font-size: 2.8rem;
+  color: #000;
+  text-align: center;
+  user-select: none;
+}

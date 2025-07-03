@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>管理專區 - 分析</title>
+  <link rel="stylesheet" href="analyze.css" />
+</head>
+<body>
+  <header class="top-bar">
+    <div class="left">
+      <img src="pictures/logo.png" alt="統一證券 Logo" />
+      <span class="company-name">統一證券小獅子 後台管理</span>
+    </div>
+    <div class="right">
+      <span id="user-role">名稱</span>
+      <button id="logout-btn">登出</button>
+    </div>
+  </header>
+
+  <button class="back-btn" onclick="history.back()">
+    <img src="pictures/back.png" alt="返回" />
+  </button>
+
+  <main class="main-area">
+    <section class="analysis-section">
+      <h2>熱門問題種類</h2>
+      <div class="btn-group">
+        <button class="analysis-btn type1" onclick="showInfo('問題主題分類次數')">問題主題分類次數</button>
+        <button class="analysis-btn type2" onclick="showInfo('問題重複率')">問題重複率</button>
+        <button class="analysis-btn type3" onclick="showInfo('詢問成長趨勢')">詢問成長趨勢</button>
+      </div>
+    </section>
+
+    <section class="analysis-section">
+      <h2>速度與準確度分析</h2>
+      <div class="btn-group">
+        <button class="analysis-btn type4" onclick="showInfo('回應時間')">回應時間</button>
+        <button class="analysis-btn type5" onclick="showInfo('超時比例')">超時比例</button>
+        <button class="analysis-btn type6" onclick="showInfo('使用者重問率')">使用者重問率</button>
+      </div>
+    </section>
+  </main>
+
+  <div id="modal" class="modal-overlay" onclick="closeModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal()" aria-label="關閉彈窗">×</button>
+      <h3 id="modal-title">標題</h3>
+      <p id="modal-text">內容說明</p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("logout-btn").addEventListener("click", () => {
+      window.location.href = "index.html";
+    });
+
+    function showInfo(title) {
+      const modal = document.getElementById("modal");
+      document.getElementById("modal-title").textContent = title;
+      document.getElementById("modal-text").textContent = title + "的相關分析內容在此顯示。";
+      modal.style.display = "flex";
+    }
+
+    function closeModal(event) {
+      if (event && event.target.id !== "modal") return;
+      document.getElementById("modal").style.display = "none";
+    }
+  </script>
+</body>
+</html>

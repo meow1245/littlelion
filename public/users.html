@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>管理專區</title>
+    <link rel="stylesheet" href="users.css" />
+</head>
+<body>
+    <header class="top-bar">
+        <div class="left">
+            <img src="pictures/logo.png" alt="統一證券 Logo" />
+            <span class="company-name">統一證券小獅子 後台管理</span>
+        </div>
+        <div class="right">
+            <span id="user-role">名稱</span>
+            <button id="logout-btn">登出</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <button class="back-btn" onclick="history.back()">
+                <img src="pictures/back.png" alt="返回" />
+            </button>
+            <nav class="side-nav">
+                <ul>
+                    <li><a href="#" onclick="showUserSection('employee')">員工專區</a></li>
+                    <li><a href="#" onclick="showUserSection('manager')">主管專區</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="content-area">
+            <div id="main-user-sections-wrapper">
+                <section class="user-section" id="employee-section">
+                    <h2>員工專區</h2>
+                    <img src="pictures/employee.png" alt="員工圖示" class="section-image" />
+                    <div class="btn-group">
+                        <button class="add-btn" onclick="showOperationPage('add', 'employee')">新增</button>
+                        <button class="delete-btn" onclick="showOperationPage('delete', 'employee')">刪除</button>
+                        <button class="update-btn" onclick="showOperationPage('update', 'employee')">修改</button>
+                        <button class="view-btn" onclick="showOperationPage('view', 'employee')">查看</button>
+                    </div>
+                </section>
+
+                <section class="user-section" id="manager-section" style="display:none;">
+                    <h2>主管專區</h2>
+                    <img src="pictures/manager.png" alt="主管圖示" class="section-image" />
+                    <div class="btn-group">
+                        <button class="add-btn" onclick="showOperationPage('add', 'manager')">新增</button>
+                        <button class="delete-btn" onclick="showOperationPage('delete', 'manager')">刪除</button>
+                        <button class="update-btn" onclick="showOperationPage('update', 'manager')">修改</button>
+                        <button class="view-btn" onclick="showOperationPage('view', 'manager')">查看</button>
+                    </div>
+                </section>
+            </div>
+
+            <section id="add-operation-section" class="operation-page" style="display:none;">
+                <button class="return-to-main-btn" onclick="returnToMainSections()">
+                    <img src="pictures/back.png" alt="返回" class="return-icon" />
+                    返回管理頁面
+                </button>
+                <h2>新增使用者</h2>
+                <form id="add-form" class="operation-form">
+                    <label for="add-id">ID：</label>
+                    <input type="text" id="add-id" name="userid" readonly />
+
+                    <label for="add-department">部門：</label>
+                    <select id="add-department" name="department" required>
+                        </select>
+
+                    <label for="add-name">名字：</label>
+                    <input type="text" id="add-name" name="name" required />
+
+                    <label for="add-identity">使用者身分：</label>
+                    <select id="add-identity" name="identity" required>
+                        </select>
+
+                    <label for="add-account">帳號：</label>
+                    <input type="text" id="add-account" name="account" required />
+
+                    <label for="add-password">密碼：</label>
+                    <input type="password" id="add-password" name="password" required />
+
+                    <button type="submit" class="operation-submit add-btn">新增</button>
+                </form>
+            </section>
+
+            <section id="delete-operation-section" class="operation-page" style="display:none;">
+                <button class="return-to-main-btn" onclick="returnToMainSections()">
+                    <img src="pictures/back.png" alt="返回" class="return-icon" />
+                    返回管理頁面
+                </button>
+                <h2>刪除使用者</h2>
+                <form id="delete-form" class="operation-form">
+                    <label for="delete-department-select">部門：</label>
+                    <select id="delete-department-select" name="department" required>
+                        <option value="">請選擇部門</option>
+                        </select>
+
+                    <label for="delete-user-select">選擇使用者：</label>
+                    <select id="delete-user-select" name="selectedUserId" required>
+                        <option value="">請先選擇部門</option>
+                    </select>
+
+                    <label for="delete-id">ID：</label>
+                    <input type="text" id="delete-id" name="userid" readonly />
+
+                    <label for="delete-name">名字：</label>
+                    <input type="text" id="delete-name" name="name" readonly />
+
+                    <button type="submit" class="operation-submit delete-btn">刪除</button>
+                </form>
+            </section>
+
+            <section id="update-operation-section" class="operation-page" style="display:none;">
+                <button class="return-to-main-btn" onclick="returnToMainSections()">
+                    <img src="pictures/back.png" alt="返回" class="return-icon" />
+                    返回管理頁面
+                </button>
+                <h2>修改使用者</h2>
+                <form id="update-form" class="operation-form">
+                    <label for="update-department-select">部門：</label>
+                    <select id="update-department-select" name="department" required>
+                        <option value="">請選擇部門</option>
+                        </select>
+
+                    <label for="update-user-select">選擇使用者：</label>
+                    <select id="update-user-select" name="selectedUserId" required>
+                        <option value="">請先選擇部門</option>
+                    </select>
+
+                    <label for="update-id">ID：</label>
+                    <input type="text" id="update-id" name="userid" readonly />
+
+                    <label for="update-account">帳號：</label>
+                    <input type="text" id="update-account" name="account" required />
+
+                    <label for="update-password">密碼：</label>
+                    <input type="password" id="update-password" name="password" required />
+
+                    <label for="update-department">部門：</label>
+                    <input type="text" id="update-department" name="department" required />
+
+                    <label for="update-name">名字：</label>
+                    <input type="text" id="update-name" name="name" required />
+
+                    <label for="update-identity">使用者身分：</label>
+                    <select id="update-identity" name="identity" required>
+                        </select>
+
+                    <button type="submit" class="operation-submit update-btn">修改</button>
+                </form>
+            </section>
+
+            <section id="view-operation-section" class="operation-page" style="display:none;">
+                <button class="return-to-main-btn" onclick="returnToMainSections()">
+                    <img src="pictures/back.png" alt="返回" class="return-icon" />
+                    返回管理頁面
+                </button>
+                <h2>查看使用者清單</h2>
+                <div id="view-users-table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>帳號</th>
+                                <th>密碼</th>
+                                <th>部門</th>
+                                <th>名字</th>
+                                <th>使用者身分</th>
+                            </tr>
+                        </thead>
+                        <tbody id="user-list-body">
+                            </tbody>
+                    </table>
+                </div>
+            </section>
+
+        </main>
+    </div>
+    <script src="users.js"></script>
+</body>
+</html>

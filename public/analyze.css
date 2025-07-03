@@ -1,0 +1,243 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Noto Sans TC", sans-serif;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: #fffdf4;
+}
+
+/* Top bar */
+.top-bar {
+  background: white;
+  border-bottom: 5px solid #ff5a00;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.top-bar .left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.top-bar img {
+  max-height: 40px;
+  max-width: 150px;
+}
+
+.company-name {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 16px;
+}
+
+#logout-btn {
+  padding: 8px 16px;
+  background-color: #d70000;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#logout-btn:hover {
+  background-color: #aa0000;
+}
+
+.back-btn {
+  position: fixed;
+  top: 70px; 
+  left: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.back-btn img {
+  width: 76px;
+  height: 76px;
+}
+
+.main-area {
+  flex: 1;              
+  display: flex;
+  gap: 40px;
+  padding: 40px 20px;
+  align-items: center;     
+  justify-content: center;
+}
+
+.analysis-section {
+  flex: 1;
+  max-width: 480px;  
+  background-color: #e9f0f7; 
+  border-radius: 16px;
+  padding: 40px 30px;
+  box-shadow: 0 6px 18px rgb(0 0 0 / 0.12);
+}
+
+.analysis-section h2 {
+  font-size: 24px;
+  margin-bottom: 30px;
+  font-weight: 700;
+  color: #004080;
+  text-align: center;
+}
+
+.btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.analysis-btn {
+  padding: 20px;
+  font-size: 18px;
+  font-weight: 700;
+  border: 3px solid;
+  border-radius: 14px;
+  cursor: pointer;
+  background-color: white;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  text-align: center;
+  user-select: none;
+}
+
+.type1 {
+  color: #1f77b4;
+  border-color: #1f77b4;
+}
+.type1:hover {
+  background-color: #1f77b4;
+  color: white;
+  transform: scale(1.07);
+  box-shadow: 0 6px 16px rgba(31, 119, 180, 0.4);
+}
+
+.type2 {
+  color: #ff7f0e;
+  border-color: #ff7f0e;
+}
+.type2:hover {
+  background-color: #ff7f0e;
+  color: white;
+  transform: scale(1.07);
+  box-shadow: 0 6px 16px rgba(255, 127, 14, 0.4);
+}
+
+.type3 {
+  color: #2ca02c;
+  border-color: #2ca02c;
+}
+.type3:hover {
+  background-color: #2ca02c;
+  color: white;
+  transform: scale(1.07);
+  box-shadow: 0 6px 16px rgba(44, 160, 44, 0.4);
+}
+
+.type4 {
+  color: #d62728;
+  border-color: #d62728;
+}
+.type4:hover {
+  background-color: #d62728;
+  color: white;
+  transform: scale(1.07);
+  box-shadow: 0 6px 16px rgba(214, 39, 40, 0.4);
+}
+
+.type5 {
+  color: #9467bd;
+  border-color: #9467bd;
+}
+.type5:hover {
+  background-color: #9467bd;
+  color: white;
+  transform: scale(1.07);
+  box-shadow: 0 6px 16px rgba(148, 103, 189, 0.4);
+}
+
+.type6 {
+  color: #8c564b;
+  border-color: #8c564b;
+}
+.type6:hover {
+  background-color: #8c564b;
+  color: white;
+  transform: scale(1.07);
+  box-shadow: 0 6px 16px rgba(140, 86, 75, 0.4);
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-content {
+  background-color: white;
+  border-radius: 12px;
+  width: 360px;
+  max-width: 90%;
+  padding: 24px 30px;
+  box-shadow: 0 10px 25px rgb(0 0 0 / 0.15);
+  position: relative;
+  font-family: "Noto Sans TC", sans-serif;
+}
+
+.modal-close {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  border: none;
+  background: none;
+  font-size: 28px;
+  cursor: pointer;
+  font-weight: 700;
+  line-height: 1;
+  color: #555;
+}
+
+.modal-close:hover {
+  color: #d62728;
+}
+
+#modal-title {
+  font-weight: 700;
+  font-size: 22px;
+  margin-bottom: 12px;
+  color: #004080;
+}
+
+#modal-text {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.4;
+}

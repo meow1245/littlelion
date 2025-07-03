@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>法規問答系統</title>
+  <link rel="stylesheet" href="ask.css">
+</head>
+<body>
+
+  <!-- Top bar -->
+  <div class="top-bar">
+    <div class="left">
+      <img src="pictures/logo.png" alt="統一證券 Logo">
+      <div class="company-name">法規助理系統</div>
+    </div>
+    <div class="right">
+      <span>使用者：測試帳號</span>
+      <button id="logout-btn">登出</button>
+    </div>
+  </div>
+
+  <!-- Back button (optional)
+  <button class="back-btn" onclick="history.back()">
+    <img src="https://cdn-icons-png.flaticon.com/512/93/93634.png" alt="返回">
+  </button> -->
+
+  <!-- 主區域：左右排版 -->
+  <div class="container">
+    <div class="left-panel">
+      <div class="question-section">
+        <h2>請輸入您的問題</h2>
+        <textarea id="question" placeholder="例如：低收入戶可以保留入學資格嗎？"></textarea>
+        <button onclick="askQuestion()">送出問題</button>
+      </div>
+
+      <div class="response-section">
+        <h3>AI 回覆</h3>
+        <div id="responseOutput">請輸入問題後，回覆將顯示在此。</div>
+      </div>
+    </div>
+
+    <div class="right-panel">
+      <h3>法條依據</h3>
+      <div id="sourceList">（查詢完成後會列出）</div>
+    </div>
+  </div>
+
+  <!-- 底部資料來源 -->
+  <footer class="footer">
+    <h4>📚 法條來源</h4>
+    <ul>
+      <li><a href="https://im.mgt.ncu.edu.tw/download/course/rules/%E5%9C%8B%E7%AB%8B%E4%B8%AD%E5%A4%AE%E5%A4%A7%E5%AD%B8%E8%B3%87%E8%A8%8A%E7%AE%A1%E7%90%86%E5%AD%B8%E7%B3%BB%E7%A2%A9%E5%A3%AB%E7%8F%AD%E7%A0%94%E7%A9%B6%E7%94%9F%E4%BF%AE%E6%A5%AD%E8%BE%A6%E6%B3%95-1131001%E6%B3%95%E8%A6%8F%E5%B0%8F%E7%B5%84%E4%BF%AE%E6%AD%A3.pdf" target="_blank">國立中央大學資訊管理學系碩士班研究生修業辦法</a></li>
+      <li><a href="https://pdc.adm.ncu.edu.tw/rule/rule107/1.pdf" target="_blank">國立中央大學學則</a></li>
+      <li><a href="https://pdc.adm.ncu.edu.tw/rule/rule104/15.pdf" target="_blank">國立中央大學博士班、碩士班研究生學位考試細則</a></li>
+      <li><a href="https://pdc.adm.ncu.edu.tw/rule/rule112/36.pdf" target="_blank">國立中央大學精進學位論文品質實施要點</a></li>
+      <li><a href="https://pdc.adm.ncu.edu.tw/rule/rule108/13-1.pdf" target="_blank">國立中央大學學分抵免辦法</a></li>
+    </ul>
+  </footer>
+<!-- 中略，保留原有結構 -->
+
+<script>
+  async function askQuestion() {
+    const question = document.getElementById("question").value.trim();
+    if (!question) return alert("請輸入問題");
+
+    document.getElementById("responseOutput").textContent = "⏳ 回覆中...";
+    document.getElementById("sourceList").innerHTML = "";
+
+    const response = await fetch("/ask", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ question })
+    });
+
+    const result = await response.json();
+
+    if (result.answer) {
+      document.getElementById("responseOutput").textContent = result.answer;
+
+      const sourceList = document.getElementById("sourceList");
+      result.sources.forEach(src => {
+        const div = document.createElement("div");
+        div.className = "source-item";
+        div.innerHTML = `<strong>📄 ${src.source}</strong><br><pre>${src.content}</pre>`;
+        sourceList.appendChild(div);
+      });
+    } else {
+      document.getElementById("responseOutput").textContent = "❌ 回覆失敗，請稍後再試。";
+    }
+  }
+</script>
+
+
+</body>
+</html>

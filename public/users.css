@@ -1,0 +1,593 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Noto Sans TC", sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #c8dafc, #f0f6ff);
+    color: #2c3e50;
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.top-bar {
+    background-color: #ffffff;
+    border-bottom: 5px solid #ff5a00;
+    padding: 12px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(255, 90, 0, 0.15);
+    position: relative;
+    z-index: 100;
+    width: 100%;
+}
+
+.top-bar .left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.top-bar img {
+    max-height: 42px;
+    max-width: 160px;
+}
+
+.company-name {
+    font-weight: 700;
+    font-size: 20px;
+    color: #ff5a00;
+}
+
+.right {
+    font-size: 16px;
+}
+
+#logout-btn {
+    background-color: #d94f3e;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    padding: 8px 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.25s ease;
+}
+
+#logout-btn:hover {
+    background-color: #b23a28;
+}
+
+/* --- Container for side-by-side layout --- */
+.container {
+    display: flex;
+    flex: 1; /* Allow container to grow and fill remaining vertical space */
+    width: 100%;
+}
+
+/* --- Sidebar Styles --- */
+.sidebar {
+    width: 250px;
+    background-color: #ffffff;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.08);
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    flex-shrink: 0; /* Prevent sidebar from shrinking */
+}
+
+.back-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    transition: transform 0.3s ease;
+    align-self: flex-start; /* Align to the start of sidebar */
+}
+
+.back-btn:hover {
+    transform: scale(1.05);
+}
+
+.back-btn img {
+    width: 60px;
+    height: 60px;
+    margin-right: 8px;
+}
+
+.side-nav {
+    width: 100%;
+}
+
+.side-nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.side-nav li {
+    margin-bottom: 5px;
+}
+
+.side-nav a {
+    display: block;
+    padding: 15px 25px;
+    color: #555;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-left: 5px solid transparent;
+}
+
+.side-nav a:hover {
+    background-color: #f0f6ff;
+    color: #ff5a00;
+}
+
+.side-nav a.active {
+    background-color: #ffe6d5;
+    color: #ff5a00;
+    border-left-color: #ff5a00;
+    font-weight: 700;
+}
+
+/* --- Main Content Area --- */
+.content-area {
+    flex: 1; /* Allow content area to grow and fill remaining space */
+    padding: 30px 40px; /* Increased padding for more space */
+    display: flex;
+    flex-direction: column; /* Allows sections to stack vertically */
+    align-items: center; /* Center content horizontally */
+    gap: 30px; /* Space between different sections */
+    max-width: 1200px; /* Max width for content area */
+    margin: 0 auto; /* Center the content area itself */
+}
+
+/* --- Wrapper for employee/manager sections to control their display --- */
+#main-user-sections-wrapper {
+    display: flex; /* Makes employee/manager sections display side by side */
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    justify-content: center; /* Centers them */
+    gap: 32px; /* Space between them */
+    width: 100%; /* Take full width of content-area */
+}
+
+.user-section {
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    width: 44%; /* Keep side-by-side on larger screens */
+    min-width: 350px;
+    max-width: 550px;
+    min-height: 520px;
+    padding: 36px 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    text-align: center;
+    transition: box-shadow 0.35s ease, transform 0.35s ease;
+}
+
+.user-section:hover {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.18);
+    transform: translateY(-12px);
+}
+
+.user-section h2 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #ff5a00;
+    text-shadow: 1px 1px 4px #f3b183aa;
+}
+
+.section-image {
+    width: 160px;
+    height: 160px;
+    object-fit: contain;
+    margin: 0 auto;
+    user-select: none;
+    filter: drop-shadow(1px 2px 2px rgba(255, 90, 0, 0.3));
+}
+
+.btn-group {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+}
+
+.btn-group button {
+    flex: 1 1 38%;
+    min-width: 130px;
+    padding: 16px 0;
+    font-size: 1.2rem;
+    border-radius: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+    color: #fff;
+    user-select: none;
+}
+
+.add-btn {
+    background-color: #28a745;
+    box-shadow: 0 6px 10px #23863aaa;
+}
+
+.add-btn:hover {
+    background-color: #1e7e34;
+    box-shadow: 0 8px 16px #1e7e34cc;
+    transform: translateY(-3px);
+}
+
+.delete-btn {
+    background-color: #d9534f;
+    box-shadow: 0 6px 10px #a63631aa;
+}
+
+.delete-btn:hover {
+    background-color: #b52b27;
+    box-shadow: 0 8px 16px #b52b27cc;
+    transform: translateY(-3px);
+}
+
+.update-btn {
+    background-color: #0275d8;
+    box-shadow: 0 6px 10px #025a9caa;
+}
+
+.update-btn:hover {
+    background-color: #025aa5;
+    box-shadow: 0 8px 16px #025aa5cc;
+    transform: translateY(-3px);
+}
+
+.view-btn {
+    background-color: #ffc107;
+    color: #333;
+    box-shadow: 0 6px 10px #b38a00aa;
+}
+
+.view-btn:hover {
+    background-color: #cc9a06;
+    box-shadow: 0 8px 16px #cc9a06cc;
+    transform: translateY(-3px);
+}
+
+/* --- New Operation Page Styles (for Add/Delete/Update/View) --- */
+.operation-page {
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    width: 100%; /* Occupy full width within content-area */
+    max-width: 900px; /* Limit maximum width for larger screens */
+    padding: 40px; /* More padding for less crowded look */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+    gap: 30px;
+    text-align: center;
+}
+
+.operation-page h2 {
+    font-size: 2.8rem; /* Larger title for operation pages */
+    font-weight: 700;
+    color: #ff5a00;
+    text-shadow: 1px 1px 4px #f3b183aa;
+    margin-bottom: 20px;
+}
+
+.return-to-main-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #0275d8;
+    transition: color 0.3s ease, transform 0.3s ease;
+    align-self: flex-start; /* Align to the start of the section */
+    margin-bottom: 20px; /* Space below the button */
+}
+
+.return-to-main-btn:hover {
+    color: #025aa5;
+    transform: translateX(-5px);
+}
+
+.return-to-main-btn .return-icon {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+/* --- Operation Form Styles --- */
+.operation-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px; /* More space between form elements */
+    width: 100%;
+    max-width: 500px; /* Limit form width */
+    text-align: left;
+}
+
+.operation-form label {
+    font-weight: 700;
+    font-size: 1.15rem; /* Slightly larger labels */
+    color: #333;
+    user-select: none;
+    margin-top: 5px; /* Space between input and next label */
+}
+
+/* --- KEY CHANGE: Apply consistent styling to input AND select elements --- */
+.operation-form input[type="text"],
+.operation-form input[type="password"],
+.operation-form select { /* Target all select elements within operation forms */
+    padding: 14px 20px; /* More padding for inputs */
+    border-radius: 14px;
+    border: 1.8px solid #d8d8d8;
+    font-size: 1.1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: #fff; /* Ensure background is white for selects */
+    appearance: none; /* Remove default browser select styles */
+    -webkit-appearance: none; /* For Safari */
+    -moz-appearance: none; /* For Firefox */
+    background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2020%2020%22%3E%3Cpath%20d%3D%22M9.293%2012.95l-3.5-3.5%201.414-1.414L10%2010.828l2.793-2.793%201.414%201.414-3.5%203.5z%22%20fill%3D%22%232c3e50%22%2F%3E%3C%2Fsvg%3E'); /* Custom arrow for select */
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 1.2em; /* Adjust arrow size */
+}
+
+.operation-form input:focus,
+.operation-form select:focus {
+    outline: none;
+    border-color: #ff5a00;
+    box-shadow: 0 0 8px #ff5a00aa;
+}
+
+.operation-submit {
+    margin-top: 25px; /* More space above submit button */
+    padding: 18px 0;
+    background-color: #ff5a00;
+    border: none;
+    border-radius: 20px;
+    font-weight: 800;
+    font-size: 1.4rem; /* Larger submit button text */
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.35s ease, box-shadow 0.35s ease;
+    user-select: none;
+    box-shadow: 0 7px 18px #ff7a0daa;
+}
+
+.operation-submit:hover {
+    background-color: #e64a00;
+    box-shadow: 0 9px 20px #e64a00cc;
+}
+
+/* --- View Users Table Styles --- */
+#view-users-table-container {
+    margin-top: 20px;
+    padding: 20px; /* More padding for the container */
+    background-color: #f9fbff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+    width: 100%; /* Ensure table occupies full width */
+}
+
+#view-users-table-container table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    font-size: 17px; /* Slightly larger font for table */
+    color: #333;
+}
+
+#view-users-table-container thead {
+    background-color: #ff5a00;
+    color: white;
+}
+
+#view-users-table-container thead th {
+    padding: 14px 10px; /* More padding for table headers */
+    font-weight: bold;
+    border: 1px solid #e0e0e0;
+}
+
+#view-users-table-container tbody td {
+    padding: 12px 8px; /* More padding for table cells */
+    border: 1px solid #ddd;
+}
+
+#view-users-table-container tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#view-users-table-container tbody tr:hover {
+    background-color: #ffe6d5;
+    transition: background-color 0.3s ease;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 992px) {
+    .container {
+        flex-direction: column; /* Stack sidebar and content vertically */
+    }
+
+    .sidebar {
+        width: 100%; /* Sidebar takes full width */
+        flex-direction: row; /* Sidebar items in a row */
+        justify-content: center;
+        padding: 15px 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); /* Shadow at bottom */
+    }
+    .sidebar .back-btn {
+        display: none; /* Hide back button in sidebar when stacked for simplicity */
+    }
+
+    .side-nav ul {
+        display: flex; /* Make nav items horizontal */
+        width: 100%;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .side-nav li {
+        margin-bottom: 0;
+    }
+
+    .side-nav a {
+        padding: 10px 15px;
+        font-size: 1rem;
+        border-left: none; /* Remove left border */
+        border-bottom: 3px solid transparent; /* Use bottom border for active */
+    }
+
+    .side-nav a.active {
+        border-bottom-color: #ff5a00;
+        border-left-color: transparent; /* Ensure left border is gone */
+    }
+
+    .content-area {
+        padding: 25px 20px;
+    }
+
+    #main-user-sections-wrapper {
+        flex-direction: column; /* Stack user sections vertically */
+        align-items: center;
+    }
+
+    .user-section {
+        width: 95%; /* Take more width on smaller screens */
+        max-width: none;
+        min-width: unset;
+    }
+
+    .btn-group {
+        flex-direction: column; /* Buttons stack vertically */
+        gap: 12px;
+    }
+
+    .btn-group button {
+        width: 100%;
+        min-width: unset;
+    }
+
+    .operation-page {
+        padding: 30px;
+        max-width: 100%;
+    }
+
+    .operation-page h2 {
+        font-size: 2.2rem;
+    }
+
+    .operation-form {
+        max-width: 100%;
+    }
+
+    .operation-submit {
+        padding: 16px 0;
+        font-size: 1.3rem;
+    }
+
+    .return-to-main-btn {
+        font-size: 1rem;
+    }
+
+    .return-to-main-btn .return-icon {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 15px;
+    }
+
+    .top-bar .left {
+        margin-bottom: 10px;
+    }
+
+    .top-bar .company-name {
+        font-size: 18px;
+    }
+
+    .right {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    #logout-btn {
+        padding: 7px 15px;
+        font-size: 0.9rem;
+    }
+
+    .side-nav ul {
+        flex-wrap: wrap; /* Allow nav items to wrap */
+        gap: 8px;
+    }
+
+    .side-nav a {
+        padding: 8px 12px;
+    }
+
+    .content-area {
+        padding: 15px;
+    }
+
+    .user-section {
+        padding: 25px 18px;
+        gap: 20px;
+    }
+
+    .user-section h2 {
+        font-size: 2rem;
+    }
+
+    .section-image {
+        width: 120px;
+        height: 120px;
+    }
+
+    .operation-page {
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .operation-page h2 {
+        font-size: 1.8rem;
+    }
+
+    .operation-form label {
+        font-size: 1rem;
+    }
+
+    .operation-form input[type="text"],
+    .operation-form input[type="password"],
+    .operation-form select {
+        padding: 10px 15px;
+        font-size: 1rem;
+    }
+}

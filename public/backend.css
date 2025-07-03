@@ -1,0 +1,134 @@
+/* === 通用設定 === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Noto Sans TC", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+}
+
+.top-bar {
+  background: white;
+  border-bottom: 5px solid #ff5a00;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.top-bar img {
+  max-height: 40px;
+  max-width: 150px;
+  width: auto;
+  height: auto;
+  display: block;
+}
+
+.top-bar .left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.company-name {
+  font-weight: bold;
+  font-size: 1.125rem; /* 18px */
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem; /* 16px */
+}
+
+#logout-btn {
+  padding: 8px 16px;
+  font-size: 1rem;
+  background-color: #ff5a00;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#logout-btn:hover {
+  background-color: #d74800;
+}
+
+.dashboard {
+  display: flex;
+  flex-direction: row;
+  height: calc(100vh - 60px); /* 扣掉 header 高度 */
+}
+
+.feature-card {
+  flex: 1;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.feature-content {
+  text-align: center;
+  transition: transform 0.3s ease;
+  width: 80%;
+  max-width: 320px;
+}
+
+.feature-content img {
+  width: 40vw;
+  max-width: 200px;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.feature-name {
+  font-size: clamp(1.5rem, 3vw, 2.625rem); /* 24px ~ 42px */
+  font-weight: bold;
+  margin-top: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover .feature-content {
+  transform: scale(1.12);
+}
+
+.card1 {
+  background-color: #9FD7FF;
+  color: #006C73;
+}
+
+.card2 {
+  background-color: #C7FFB9;
+  color: #378823;
+}
+
+.card3 {
+  background-color: #FFA7A8;
+  color: #962929;
+}
+
+@media (max-width: 768px) {
+  .dashboard {
+    flex-direction: column;
+  }
+
+  .feature-content img {
+    width: 60vw;
+    max-width: 180px;
+  }
+
+  .feature-name {
+    font-size: 5vw;
+  }
+}
